@@ -9,24 +9,30 @@ function StockContainer({ stocks, onAddStock }) {
 
   // Render the list of stocks and a heading
   return (
-    <table className='stock-table'>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Ticker</th>
-          <th>Price</th>
-          {/* <th>Type</th> */}
-          <th>Market Cap</th>
-          <th>P/E Ratio</th>
-          <th>Dividend Yield</th>
-          <th>52-Week High</th>
-          <th>52-Week Low</th>
-          <th>Avg Volume</th>
-          <th>Sector</th>
-        </tr>
-      </thead>
-      <tbody>{stockList}</tbody>
-    </table>
+    <>
+      <table className='stock-table'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Ticker</th>
+            <th>Price</th>
+            {/* <th>Type</th> */}
+            <th>Market Cap</th>
+            <th>P/E Ratio</th>
+            <th>Dividend Yield</th>
+            <th>52-Week High</th>
+            <th>52-Week Low</th>
+            <th>Avg Volume</th>
+            <th>Sector</th>
+          </tr>
+        </thead>
+        <tbody>{stockList}</tbody>
+      </table>
+
+      <select name='rows per page' id=''>
+        <option value='1'>1</option>
+      </select>
+    </>
   );
 }
 
