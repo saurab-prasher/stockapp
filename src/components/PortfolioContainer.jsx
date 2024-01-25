@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Stock from "./Stock";
 function PortfolioContainer({ stocks, onRemoveStock }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(5); // Default to 5 rows per page
+
+  // Change page handler
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Total number of pages
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(stocks.length / rowsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
     <div>
       <h2>My Portfolio</h2>
@@ -32,6 +44,53 @@ function PortfolioContainer({ stocks, onRemoveStock }) {
           ))}
         </tbody>
       </table>
+      <div>
+        <label htmlFor='rows-per-page'>Rows per page:</label>
+        <select
+          name='rows per page'
+          id='rows-per-page'
+          value={rowsPerPage}
+          onChange={(e) => setRowsPerPage(parseInt(e.target.value, 10))}
+        >
+          <option value='5'>5</option>
+          <option value='10'>10</option>
+          <option value='15'>15</option>
+          <option value='20'>20</option>
+        </select>
+      </div>
+
+      <div className='pagination'>
+        <button
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          &#171; Prev
+        </button>
+
+        {pageNumbers
+          .slice(
+            Math.max(0, currentPage - 2),
+            Math.min(currentPage + 1, pageNumbers.length)
+          )
+          .map((number) => (
+            <button
+              key={number}
+              onClick={() => paginate(number)}
+              className={currentPage === number ? "active" : ""}
+            >
+              {number}
+            </button>
+          ))}
+
+        <button
+          onClick={() =>
+            setCurrentPage((prev) => Math.min(prev + 1, pageNumbers.length))
+          }
+          disabled={currentPage === pageNumbers.length}
+        >
+          Next &#187;
+        </button>
+      </div>
     </div>
   );
 }
