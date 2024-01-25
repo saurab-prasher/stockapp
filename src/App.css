@@ -1,3 +1,7 @@
+.heading-main {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
 .container-stock {
   display: flex;
   margin-top: 2.4rem;
@@ -118,4 +122,34 @@
   text-align: left;
   background-color: #686868;
   color: white;
+}
+/* Pagination container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Pagination buttons */
+.pagination button {
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  transition: background-color 0.3s;
+}
+
+/* Hover and active styles for pagination buttons */
+.pagination button:hover,
+.pagination button:focus {
+  background-color: #e2e6ea;
+}
+
+/* Active button style */
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
 }

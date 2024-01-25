@@ -4,7 +4,7 @@ import MainContainer from "./components/MainContainer";
 function App() {
   return (
     <>
-      <h1>Flatiron Stock Exchange</h1>
+      <h1 className="heading-main">Flatiron Stock Exchange</h1>
       <MainContainer />
     </>
   );
